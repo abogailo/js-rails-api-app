@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_24_201246) do
+ActiveRecord::Schema.define(version: 2019_11_28_231210) do
 
   create_table "course_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.integer "course_id"
@@ -21,10 +21,8 @@ ActiveRecord::Schema.define(version: 2019_11_24_201246) do
 
   create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "title"
-    t.bigint "section_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["section_id"], name: "index_courses_on_section_id"
   end
 
   create_table "path_courses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
@@ -45,6 +43,8 @@ ActiveRecord::Schema.define(version: 2019_11_24_201246) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "course_id"
+    t.index ["course_id"], name: "index_sections_on_course_id"
   end
 
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
@@ -53,5 +53,5 @@ ActiveRecord::Schema.define(version: 2019_11_24_201246) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "courses", "sections"
+  add_foreign_key "sections", "courses"
 end

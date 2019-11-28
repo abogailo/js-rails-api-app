@@ -1,3 +1,4 @@
 class Path < ApplicationRecord
-  belongs_to :course
+  has_many :path_courses, dependent: :delete_all
+  has_many :courses, through: :path_courses
 end

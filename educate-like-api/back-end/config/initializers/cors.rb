@@ -4,7 +4,7 @@
 # Handle Cross-Origin Resource Sharing (CORS) in order to accept cross-origin AJAX requests.
 
 # Read more: https://github.com/cyu/rack-cors
-
+# https://learn.co/tracks/full-stack-web-development-v8/module-14-front-end-web-programming-in-javascript/section-6-rails-as-an-api/pokemon-teams-project
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
    allow do
      origins '*'
