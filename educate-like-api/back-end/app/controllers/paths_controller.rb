@@ -10,7 +10,7 @@ class PathsController < ApplicationController
       end
     
       def new
-        @path = Path.find(params[:id])
+        @path = Path.new
       end
     
       def create

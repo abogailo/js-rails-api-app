@@ -1,4 +1,4 @@
 class PathSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :created_at, :name
 end
