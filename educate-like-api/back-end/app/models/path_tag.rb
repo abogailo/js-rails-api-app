@@ -1,0 +1,2 @@
+class PathTag < ApplicationRecord
+end

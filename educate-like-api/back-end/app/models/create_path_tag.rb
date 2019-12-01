@@ -1,0 +1,2 @@
+class CreatePathTag < ApplicationRecord
+end
