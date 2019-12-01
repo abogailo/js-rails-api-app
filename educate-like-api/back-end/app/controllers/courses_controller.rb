@@ -12,18 +12,13 @@ class CoursesController < ApplicationController
 
     def create
         course = Course.new(course_params)
-        paths = params[:paths].map { |path| Paths.find_by(title: path) }
-        tags = params[:tags].map { |tag| Tags.find_or_create_by(name: tag) }
+        paths = params[:paths].map { |path| Path.find_by(title: path) }
+        tags = params[:tags].map { |tag| Course.tags.find_or_create_by(name: tag) }
         course.paths << paths
         course.tags << tags
         course.save
         render json: CourseSerializer.new(course)
     end
-    
-    def new
-        @course = Course.find(params[:id])
-    end
-    
     
     def destroy
         @course = Course.find(params[:id])
@@ -31,9 +26,7 @@ class CoursesController < ApplicationController
         render json: @course
     end
     
-    private
-    
-                                                                                                                                                             def course_params
+    private                                                                                                                                                 def course_params
         params.require(:course).permit(:title, sections_attributes: [:title, :text])
     end
       
