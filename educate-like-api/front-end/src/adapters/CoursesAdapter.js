@@ -5,7 +5,8 @@ class CoursesAdapter {
     }
 
     getCourses() {
-        return fetch(this.baseUrl).then(res => res.json())
+        console.log("try this")
+        return fetch(this.baseUrl).then(response => response.json()).then(json => json.data)
     }
 }
 
