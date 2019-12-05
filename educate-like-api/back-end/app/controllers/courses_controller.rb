@@ -2,7 +2,8 @@ class CoursesController < ApplicationController
 
     def index
         courses = Course.all
-        render json: CourseSerializer.new(courses, include: [:sections]).serialized_json
+        #render json: CourseSerializer.new(courses, include: [:sections]).serialized_json
+        render json: CourseSerializer.new(courses)
     end
     
     def show
@@ -27,7 +28,7 @@ class CoursesController < ApplicationController
     end
     
     private                                                                                                                                                 def course_params
-        params.require(:course).permit(:title, sections_attributes: [:title, :text])
+        params.require(:course).permit(:title, sections_attributes: [:title, :text]) #whitelisting parameters
     end
       
 end
