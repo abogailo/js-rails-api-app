@@ -16,10 +16,6 @@ class Courses {
           this.adapter
           .getCourses()
           .then(courses => this.createCourses(courses))
-          //.then(courses => {
-           //   courses.forEach(c => this.courses.push(new Course(c)))//push new course instance into array 
-           //   console.log(this.courses) //get all recipes from here and parse each one
-          //})
           .then(() => {
             this.render();
           })
@@ -27,12 +23,20 @@ class Courses {
 
       createCourses(courses){
         for (let course of courses){
-          this.courses.push(new Course(course.attributes.title))
+          let sections = this.createSectionsArray(course.attributes.sections)
+          this.courses.push(new Course(course.attributes.title, sections))
         }
         console.log(this.courses)
         
       }
-  
+
+      createSectionsArray(sections){
+        const sectionsArray = sections.map(section => ({title: section.title, content: section.content}))
+        console.log(sectionsArray)
+        return sectionsArray
+         
+      } 
+
       render() {
         this.coursesContainer.innerHTML = this.courses.map(course => course.renderTitleList()).join('')
       }

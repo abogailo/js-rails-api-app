@@ -5,6 +5,6 @@ class Course {
     }
 
     renderTitleList(){
-        return `<li>${this.title}</li>`
+        return `<li>${this.title}${this.sections}</li>`
     }
   }
