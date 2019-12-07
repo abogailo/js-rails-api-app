@@ -26,17 +26,24 @@ class Courses {
           let sections = this.createSectionsArray(course.attributes.sections)
           this.courses.push(new Course(course.attributes.title, sections))
         }
-        console.log(this.courses)
         
       }
 
-      createSectionsArray(sections){
-        const sectionsArray = sections.map(section => ({title: section.title, content: section.content}))
+     /* createSectionsArray(sections){
+        let sectionsArray = [];
+        for (let section of sections){
+          sectionsArray.push(section.title, section.content)
+        }
         console.log(sectionsArray)
         return sectionsArray
-         
-      } 
+        
+      } */
 
+      createSectionsArray(sections){
+        const sectionsArray = sections.map(section => ({title: section.title, content: section.content}))
+        return sectionsArray
+      } 
+  
       render() {
         this.coursesContainer.innerHTML = this.courses.map(course => course.renderTitleList()).join('')
       }
