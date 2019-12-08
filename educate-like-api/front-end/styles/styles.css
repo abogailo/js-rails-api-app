@@ -33,3 +33,30 @@ body {
     src: local('Solway Regular'), local('Solway-Regular'), url(https://fonts.gstatic.com/s/solway/v1/AMOQz46Cs2uTAOCmhXo8sOUcUw.woff2) format('woff2');
     }
 
+    .card {
+        width: 350px;
+        height: 206px;
+        border: 1px solid #f1f1f1;
+        box-shadow: 7px 7px 5px 0px rgba(194,190,194,1);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: row;
+        margin-left: 20px;
+      
+      }
+
+      .hidden {
+        display: none;
+      }
+      
+      
+      #layout {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      
+      #posts {
+        margin-top: 20px;
+      }

@@ -8,7 +8,7 @@ class Courses {
   
       initBindingsAndEventListeners(){
           this.coursesContainer = document.getElementById('courses-container')
-          this.newCourseSection = document.getElementById('new-course-section')
+          this.courseSectionsContainer = document.getElementById('new-course-section')
           this.courseForm = document.getElementById('new-course-form')
       }
 
@@ -19,6 +19,9 @@ class Courses {
           .then(() => {
             this.render();
           })
+          .then(() => {
+              this.renderSections();
+            })
       }
 
       createCourses(courses){
@@ -26,18 +29,7 @@ class Courses {
           let sections = this.createSectionsArray(course.attributes.sections)
           this.courses.push(new Course(course.attributes.title, sections))
         }
-        
       }
-
-     /* createSectionsArray(sections){
-        let sectionsArray = [];
-        for (let section of sections){
-          sectionsArray.push(section.title, section.content)
-        }
-        console.log(sectionsArray)
-        return sectionsArray
-        
-      } */
 
       createSectionsArray(sections){
         const sectionsArray = sections.map(section => ({title: section.title, content: section.content}))
@@ -45,7 +37,11 @@ class Courses {
       } 
   
       render() {
-        this.coursesContainer.innerHTML = this.courses.map(course => course.renderTitleList()).join('')
+        this.coursesContainer.innerHTML = this.courses.map(course => course.renderCourseCards()).join('')
       }
+
+      renderSections(){
+        this.courseSectionsContainer.innerHTML = this.courses.map(course => course.renderSections())
+      }
     }
   
