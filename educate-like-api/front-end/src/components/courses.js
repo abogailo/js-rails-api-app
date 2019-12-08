@@ -18,12 +18,13 @@ class Courses {
           this.adapter
           .getCourses()
           .then(courses => this.createCourses(courses))
+          .then(() => {
+                      this.renderSections();
+                    })
           .then(() => {
             this.render();
           })
-          .then(() => {
-              this.renderSections();
-            })
+          
       }
 
 

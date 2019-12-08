@@ -19,8 +19,13 @@ class Course {
         
         card.onclick = function() {
             card.style.border = "1px solid black";
-            let element = card.getElementsByTagName('p')[0].innerText;
-                console.log(element)
+            let cool = card.getElementsByTagName('p')[0].innerText;
+                console.log(cool)
+                let now = document.getElementById(cool)
+                console.log(now)
+                if (now.classList.contains("hidden")) {
+                    now.classList.remove("hidden");
+                  } 
           }
 
     }
