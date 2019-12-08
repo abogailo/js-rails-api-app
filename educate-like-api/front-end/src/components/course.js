@@ -26,12 +26,22 @@ class Course {
 
         card.onclick = function() {
 
+            let collection= document.getElementsByClassName("checked")
+            let collection2= document.getElementsByClassName("checked")
+            for (var i = 0; i < collection.length; i++) {
+                collection[i].classList.remove('checked')
+                for (var j = collection2.length-1; j >= 0; j--) {
+                    collection[j].classList.remove('checked')
+                }
+              }
+
             card.style.border = "1px solid black";
             let para = card.getElementsByTagName('p')[0].innerText;
             let collectionOfNames = document.getElementsByClassName(para)
             for(let element of collectionOfNames){
                 if(element.classList.contains("hidden")){
                     element.classList.remove("hidden")
+                    element.classList.value += " checked"
                 }
                 else{
                     element.classList.value += " hidden"
