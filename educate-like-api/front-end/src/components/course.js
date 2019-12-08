@@ -3,7 +3,11 @@ class Course {
     constructor(title, sections) {
         this.title = title;
         this.sections = sections;
+
+        const store = '';
     }
+
+    
     
     renderCourseCards(){
         const card = document.createElement('div');
@@ -17,24 +21,33 @@ class Course {
         card.appendChild(course_card)
         document.getElementById("new-course-container").appendChild(card);
         
-        card.onclick = function() {
-            card.style.border = "1px solid black";
-            let cool = card.getElementsByTagName('p')[0].innerText;
-                console.log(cool)
-                let now = document.getElementById(cool)
-                console.log(now)
-                if (now.classList.contains("hidden")) {
-                    now.classList.remove("hidden");
-                  } 
-          }
+        card.style.border = "1px solid blue";
+            
 
+        card.onclick = function() {
+
+            card.style.border = "1px solid black";
+            let para = card.getElementsByTagName('p')[0].innerText;
+            let collectionOfNames = document.getElementsByClassName(para)
+            for(let element of collectionOfNames){
+                if(element.classList.contains("hidden")){
+                    element.classList.remove("hidden")
+                }
+                else{
+                    element.classList.value += " hidden"
+                }
+            }
+
+          }
     }
+ 
+   
+    
 
     renderSections(){
         for(let section of this.sections){
             const sectionElement = document.createElement('div');
-            sectionElement.id = this.title;
-            sectionElement.className = "hidden";
+            sectionElement.className = this.title + " hidden";
             sectionElement.appendChild(document.createTextNode(section.title));
             sectionElement.appendChild(document.createTextNode(section.content));
             document.getElementById("courses").appendChild(sectionElement);
