@@ -23,7 +23,7 @@ body {
     font-weight: 400;
     font-display: swap;
     src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
-}
+    }
 
   @font-face {
     font-family: 'Solway';
@@ -45,18 +45,33 @@ body {
       
       }
 
-      .hidden {
+    .hidden {
         display: none;
-      }
-      
-      
-      #layout {
+    }
+    
+    #new-course-container {
         margin-top: 20px;
         display: flex;
         flex-direction: row;
         justify-content: center;
-      }
-      
-      #posts {
+        
+    }
+    
+    #courses {
         margin-top: 20px;
-      }
+    }
+    
+    .course_card{
+        padding-top: 50px;
+        padding-right: 20px;
+    }
+    .card_view {
+        border: 5px solid grey;
+        box-shadow: 7px 7px 5px 0px rgba(194,190,194,1);
+        border-radius: 3px;
+        margin-left: 20px;
+    }
+
+    
+
+    

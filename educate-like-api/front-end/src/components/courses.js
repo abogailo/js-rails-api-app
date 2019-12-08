@@ -2,14 +2,16 @@ class Courses {
       constructor() {
         this.courses = [];
         this.adapter = new CoursesAdapter();
+        this.coursesContainer = document.getElementById('courses-container')
+        this.courseSectionsContainer = document.getElementById('new-course-section')
+        this.courseForm = document.getElementById('new-course-form')
+       
         this.fetchAndLoadCourses();
         this.initBindingsAndEventListeners();
       }
   
       initBindingsAndEventListeners(){
-          this.coursesContainer = document.getElementById('courses-container')
-          this.courseSectionsContainer = document.getElementById('new-course-section')
-          this.courseForm = document.getElementById('new-course-form')
+          
       }
 
       fetchAndLoadCourses(){
@@ -24,6 +26,7 @@ class Courses {
             })
       }
 
+
       createCourses(courses){
         for (let course of courses){
           let sections = this.createSectionsArray(course.attributes.sections)
@@ -37,7 +40,7 @@ class Courses {
       } 
   
       render() {
-        this.coursesContainer.innerHTML = this.courses.map(course => course.renderCourseCards()).join('')
+         this.courses.map(course => course.renderCourseCards())
       }
 
       renderSections(){

@@ -6,9 +6,23 @@ class Course {
     }
     
     renderCourseCards(){
-        const paragraphElement = document.createElement("ul");
+        const card = document.createElement('div');
+        card.className = "card";
+        const course_card = document.createElement('div');
+        course_card.className = "course_card";
+        const paragraphElement = document.createElement("p");
+
         paragraphElement.appendChild(document.createTextNode(this.title));
-        document.getElementById("new-course-container").appendChild(paragraphElement);
+        course_card.appendChild(paragraphElement)
+        card.appendChild(course_card)
+        document.getElementById("new-course-container").appendChild(card);
+        
+        card.onclick = function() {
+            card.style.border = "1px solid black";
+            let element = card.getElementsByTagName('p')[0].innerText;
+                console.log(element)
+          }
+
     }
 
     renderSections(){
