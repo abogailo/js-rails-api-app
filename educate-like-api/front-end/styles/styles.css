@@ -26,10 +26,10 @@ body {
 }
 
   @font-face {
-        font-family: 'Solway';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: local('Solway Regular'), local('Solway-Regular'), url(https://fonts.gstatic.com/s/solway/v1/AMOQz46Cs2uTAOCmhXo8sOUcUw.woff2) format('woff2');
+    font-family: 'Solway';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Solway Regular'), local('Solway-Regular'), url(https://fonts.gstatic.com/s/solway/v1/AMOQz46Cs2uTAOCmhXo8sOUcUw.woff2) format('woff2');
     }
 

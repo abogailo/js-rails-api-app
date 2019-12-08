@@ -20,12 +20,17 @@ class Course {
         
         for(let section of this.sections){
             console.log(section.title)
+
+           const linkElement = document.createElement('div');
+            linkElement.id = this.title;
             linkElement.appendChild(document.createTextNode(section.title));
             linkElement.appendChild(document.createTextNode(section.content));
+            document.getElementById("courses").appendChild(linkElement);
             console.log(section.content)
         }
         document.getElementById("new-course-container").appendChild(paragraphElement);
-        document.getElementById("courses").appendChild(linkElement);
+        
+//add unique titles for div
     }
 
   }
