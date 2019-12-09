@@ -3,12 +3,8 @@ class Course {
     constructor(title, sections) {
         this.title = title;
         this.sections = sections;
-
-        const store = '';
     }
 
-    
-    
     renderCourseCards(){
         const card = document.createElement('div');
         card.className = "card";
@@ -20,23 +16,35 @@ class Course {
         course_card.appendChild(paragraphElement)
         card.appendChild(course_card)
         document.getElementById("new-course-container").appendChild(card);
-        
-        card.style.border = "1px solid blue";
-            
+        card.style.border = "1px solid white";
 
         card.onclick = function() {
+            
 
-            let collection= document.getElementsByClassName("checked")
-            let collection2= document.getElementsByClassName("checked")
-            for (var i = 0; i < collection.length; i++) {
-                collection[i].classList.remove('checked')
-                for (var j = collection2.length-1; j >= 0; j--) {
-                    collection[j].classList.remove('checked')
-                }
-              }
+            let collection = document.getElementsByClassName("checked")
+            for (var j = collection.length-1; j >= 0; j--) {
+                collection[j].classList.add("hidden")
+            }
 
-            card.style.border = "1px solid black";
+            let collection2 = document.getElementsByClassName("checked")
+            for (var j = collection2.length-1; j >= 0; j--) {
+                collection[j].classList.remove("checked")
+            }
+            
             let para = card.getElementsByTagName('p')[0].innerText;
+            let cardCollection = document.getElementsByClassName("card")
+            for (let e of cardCollection)
+            {
+                let currentCard = e.getElementsByTagName('p')[0].innerText;
+                if (currentCard !== para){
+                    e.style.border = "1px solid white";
+
+                }
+                else {
+                    card.style.border = "1px solid black";
+                }
+            }
+                    
             let collectionOfNames = document.getElementsByClassName(para)
             for(let element of collectionOfNames){
                 if(element.classList.contains("hidden")){
