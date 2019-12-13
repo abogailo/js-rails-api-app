@@ -4,14 +4,8 @@ class Courses {
         this.adapter = new CoursesAdapter();
         this.coursesContainer = document.getElementById('courses-container')
         this.courseSectionsContainer = document.getElementById('new-course-section')
-        this.courseForm = document.getElementById('new-course-form')
-       
+        this.courseForm = document.getElementById('new-course-form')    
         this.fetchAndLoadCourses();
-        this.initBindingsAndEventListeners();
-      }
-  
-      initBindingsAndEventListeners(){
-          
       }
 
       fetchAndLoadCourses(){
@@ -24,9 +18,7 @@ class Courses {
           .then(() => {
             this.render();
           })
-          
       }
-
 
       createCourses(courses){
         for (let course of courses){

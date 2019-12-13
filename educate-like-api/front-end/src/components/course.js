@@ -19,7 +19,6 @@ class Course {
         card.style.border = "1px solid white";
 
         card.onclick = function() {
-            
 
             let collection = document.getElementsByClassName("checked")
             for (var j = collection.length-1; j >= 0; j--) {
@@ -41,7 +40,7 @@ class Course {
 
                 }
                 else {
-                    card.style.border = "1px solid black";
+                    card.style.border = "1px solid #294762";
                 }
             }
                     

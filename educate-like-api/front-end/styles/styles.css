@@ -43,35 +43,35 @@ body {
         flex-direction: row;
         margin-left: 20px;
       
-      }
+    }
 
     .hidden {
         display: none;
     }
-    
+
     #new-course-container {
         margin-top: 20px;
         display: flex;
         flex-direction: row;
         justify-content: center;
-        
     }
     
     #courses {
         margin-top: 20px;
     }
-    
+
     .course_card{
-        padding-top: 50px;
-        padding-right: 20px;
+        
+        padding-top: 10px;
     }
+    
     .card_view {
         border: 5px solid grey;
         box-shadow: 7px 7px 5px 0px rgba(194,190,194,1);
         border-radius: 3px;
-        margin-left: 20px;
+        margin-left: 2px;
     }
 
-    
+
 
     
