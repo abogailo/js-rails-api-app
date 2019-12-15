@@ -60,8 +60,13 @@ body {
         margin-top: 20px;
     }
 
+    #btnAdd {
+        border-radius: 13px;
+        color: rgb(222, 231, 230);
+        background-color: #3b6386;
+    }
+
     .course_card{
-        
         padding-top: 10px;
     }
     
@@ -72,6 +77,29 @@ body {
         margin-left: 2px;
     }
 
+    .select{     
+        position: sticky; 
+        bottom: 0;
+   }
 
+   input {
+    border-radius: 13px;
+    border: .5px solid rgb(201, 199, 202);
+    padding: 2px; 
+    width: 160px;
+    height: 15px;    
+}
 
-    
+textarea {
+    width: 96%;
+    outline: none;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    line-height: 19px;
+    color: #666;
+    resize: vertical;
+    background: #fff;
+    transition: background .25s ease-in-out;
+}

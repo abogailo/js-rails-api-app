@@ -20,20 +20,35 @@
                   <input type="text" name="course-section" id="new-course-section"">
                 </div>
               </div>
+            <div id="section-area"
               <div class="col-sm-12">
                 <div class="input-block">
-                  <label for="">Section name</label>
-                  <input type="text" class="form-control">
+                  <label for="" >Section name </label>
+                  <input type="text" class="form-control" id="ip2">
                 </div>
               </div>
               <div class="col-sm-12">
                 <div class="input-block textarea">
                   <label for="">Section Content</label>
-                  <textarea rows="3" type="text" class="form-control"></textarea>
+                  <textarea rows="6" placeholder="Provide lesson here..." class="form-control"></textarea>
                 </div>
+              </div>
+            </div>
+              <div class="section-add">
+                <button id="btnAdd" type="button" onclick="createTextBox()"> + </button>
               </div>
               <div class="col-sm-12">
                 <button class="square-button">Send</button>
+              </div>
+
+              <h1>Tags</h1>
+              <div class="select">
+                <select name="slct" id="slct">
+                  <option selected disabled>Choose an option</option>
+                  <option value="1">Pure CSS</option>
+                  <option value="2">No JS</option>
+                  <option value="3">Nice!</option>
+                </select>
               </div>
             </form>
           </section>
