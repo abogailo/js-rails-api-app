@@ -58,8 +58,6 @@ class Course {
           }
     }
  
-   
-    
 
     renderSections(){
         for(let section of this.sections){

@@ -8,10 +8,17 @@
   </head>
 
   <body>
-    <div class="container">
+    <ul class="sidebar">
+      <li class="sidebar-brand"><a href="">Educate Like</a></li>
+      <li><a href="#">View</a></li>
+      <li><a href="#">Create</a></li>
+      <li><a href="#">Add to</a></li>
+      <li><a href="#">Logout</a></li>
+      </ul>
+    <div class="container " >
       <h1>Courses</h1>
        
-      <div id="new-course-form">
+      <div id="new-course-form" class = "call">
         <section class="contact-wrap">
           <form action="" class="contact-form">
               <div class="col-sm-6">
@@ -33,7 +40,6 @@
                   <textarea rows="6" placeholder="Provide lesson here..." class="form-control"></textarea>
                 </div>
               </div>
-            </div>
               <div id="section-add">
                 <button id="btnAdd" type="button"> + </button>
               </div>
@@ -53,7 +59,6 @@
             </form>
           </section>
         </div>
-      
       <div id="new-course-container"> 
           <div class="card-view"></div>
       </div>
@@ -61,6 +66,7 @@
       <div id="courses" style="text-align: center;">
           <div id="instruction"> Click card to view sections </div>
       </div>
+
 
     <script src="src/components/courses.js"></script>
     <script src="src/components/tags.js"></script>

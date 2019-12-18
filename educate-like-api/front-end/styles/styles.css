@@ -9,6 +9,8 @@ body {
     font-weight: 40;
   }
 
+  div {margin: 20px 0px 10px 10px; }
+
   @font-face {
     font-family: 'Lato';
     font-style: bold;
@@ -46,6 +48,10 @@ body {
     }
 
     .hidden {
+        display: none;
+    }
+
+    .call {
         display: none;
     }
 
