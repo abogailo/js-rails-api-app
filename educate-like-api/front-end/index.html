@@ -8,57 +8,65 @@
   </head>
 
   <body>
-    <ul class="sidebar">
-      <li class="sidebar-brand"><a href="">Educate Like</a></li>
-      <li><a href="#">View</a></li>
-      <li><a href="#">Create</a></li>
-      <li><a href="#">Add to</a></li>
-      <li><a href="#">Logout</a></li>
-      </ul>
-    <div class="container " >
-      <h1>Courses</h1>
-       
-      <div id="new-course-form" class = "call">
-        <section class="contact-wrap">
-          <form action="" class="contact-form">
-              <div class="col-sm-6">
-                <div class="input-block">
-                  <label for="">Course name</label>
-                  <input type="text" name="course-section" id="new-course-section"">
-                </div>
-              </div>
-            <div id="section-area"
-              <div class="col-sm-12">
-                <div class="input-block">
-                  <label> Section name </label>
-                  <input type="text" class="form-control" id="ip2">
-                </div>
-              </div>
-              <div class="col-sm-12">
-                <div class="input-block textarea">
-                  <label for="">Section Content</label>
-                  <textarea rows="6" placeholder="Provide lesson here..." class="form-control"></textarea>
-                </div>
-              </div>
-              <div id="section-add">
-                <button id="btnAdd" type="button"> + </button>
-              </div>
-              <div class="col-sm-12">
-                <button class="square-button">Send</button>
-              </div>
-
-              <h1>Tags</h1>
-              <div class="select">
-                <select name="slct" id="slct">
-                  <option selected disabled>Choose an option</option>
-                  <option value="1">Pure CSS</option>
-                  <option value="2">No JS</option>
-                  <option value="3">Nice!</option>
-                </select>
-              </div>
-            </form>
-          </section>
+    <div class="wrapper">
+      <div class="sidebar">
+        <div class="logo">
+          Educate Like!
         </div>
+        <ul>
+            <span class="title">Create</span> 
+        </ul>
+      </div>
+      
+      <div class="main_container">
+        <div class="container">
+          <h1>Courses</h1>
+           
+          <div id="new-course-form" class = "call">
+            <section class="contact-wrap">
+              <form action="" class="contact-form">
+                  <div class="col-sm-6">
+                    <div class="input-block">
+                      <label for="">Course name</label>
+                      <input type="text" name="course-section" id="new-course-section"">
+                    </div>
+                  </div>
+                <div id="section-area"
+                  <div class="col-sm-12">
+                    <div class="input-block">
+                      <label> Section name </label>
+                      <input type="text" class="form-control" id="ip2">
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="input-block textarea">
+                      <label for="">Section Content</label>
+                      <textarea rows="6" placeholder="Provide lesson here..." class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div id="section-add">
+                    <button id="btnAdd" type="button"> + </button>
+                  </div>
+                  <div class="col-sm-12">
+                    <button class="square-button">Send</button>
+                  </div>
+    
+                  <h1>Tags</h1>
+                  <div class="select">
+                    <select name="slct" id="slct">
+                      <option selected disabled>Choose an option</option>
+                      <option value="1">Pure CSS</option>
+                      <option value="2">No JS</option>
+                      <option value="3">Nice!</option>
+                    </select>
+                  </div>
+                </form>
+              </section>
+            </div><!--end call-->
+          </div><!--end container-->
+      </div> <!--end main-->
+    </div> <!--end wrapper-->
+    
       <div id="new-course-container"> 
           <div class="card-view"></div>
       </div>

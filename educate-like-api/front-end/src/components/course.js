@@ -40,7 +40,7 @@ class Course {
 
                 }
                 else {
-                    card.style.border = "1px solid #294762";
+                    card.style.border = "1px solid #2e4ead";
                 }
             }
                     
@@ -58,7 +58,6 @@ class Course {
           }
     }
  
-
     renderSections(){
         for(let section of this.sections){
             const sectionElement = document.createElement('div');
