@@ -2,10 +2,11 @@ class Courses {
       constructor() {
         this.courses = [];
         this.adapter = new CoursesAdapter();
-        this.sectionAddition = document.getElementById("btnAdd");
-        this.coursesContainer = document.getElementById('courses-container')
-        this.courseSectionsContainer = document.getElementById('new-course-section')
-        this.courseForm = document.getElementById('new-course-form')    
+        this.sectionAddition = document.getElementById('btnAdd');
+        this.coursesContainer = document.getElementById('courses-container');
+        this.courseSectionsContainer = document.getElementById('new-course-section');
+        this.courseForm = document.getElementById('new-course-form');
+        this.createForm = document.getElementById('create');
         this.initBindingsAndEventListeners();
         this.fetchAndLoadCourses();
       }
@@ -14,6 +15,9 @@ class Courses {
         this.sectionAddition.addEventListener("click", function() {
           event.preventDefault();
           this.addSection();
+        }.bind(this))
+        this.createForm.addEventListener("click", function() {
+          this.showForm();
         }.bind(this))
       }
 
@@ -50,6 +54,15 @@ class Courses {
         textSectionContent.rows = "6"
         textSectionContent.placeholder = "Provide lesson here..."
         textSectionContent.className = "form-control";
+      }
+
+      showForm(){
+        console.log("ya made it")
+        let form = document.getElementById("new-course-form");
+            if (form.classList.contains("call")){
+              form.classList.remove("call")
+            }
+                
       }
 
       fetchAndLoadCourses(){
