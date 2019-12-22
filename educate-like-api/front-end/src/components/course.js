@@ -37,7 +37,6 @@ class Course {
                 let currentCard = e.getElementsByTagName('p')[0].innerText;
                 if (currentCard !== para){
                     e.style.border = "1px solid white";
-
                 }
                 else {
                     card.style.border = "1px solid #2e4ead";
@@ -61,9 +60,16 @@ class Course {
     renderSections(){
         for(let section of this.sections){
             const sectionElement = document.createElement('div');
+            sectionElement.id = "section-area"
             sectionElement.className = this.title + " hidden";
-            sectionElement.appendChild(document.createTextNode(section.title));
-            sectionElement.appendChild(document.createTextNode(section.content));
+            const titleSection = document.createElement('div');
+            titleSection.id = "section-title"
+            titleSection.appendChild(document.createTextNode(section.title));
+            sectionElement.appendChild(titleSection);
+            const contentSection = document.createElement('div');
+            contentSection.id = "section-content"
+            contentSection.appendChild(document.createTextNode(section.content));
+            sectionElement.appendChild(contentSection);
             document.getElementById("courses").appendChild(sectionElement);
         } 
 //add unique titles validations  to api for divs to display correctly
