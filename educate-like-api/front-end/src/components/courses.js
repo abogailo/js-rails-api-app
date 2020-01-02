@@ -4,14 +4,15 @@ class Courses {
         this.adapter = new CoursesAdapter();
         this.sectionAddition = document.getElementById('btnAdd');
         this.coursesContainer = document.getElementById('courses-container');
-        this.courseSectionsContainer = document.getElementById('new-course-section');
+        this.courseSectionsContainer = document.getElementById('section-view');
+        //set it to a random div just to load all the sections, they are all hidden at this point
         this.courseForm = document.getElementById('new-course-form');
         this.createForm = document.getElementById('create');
-        this.initBindingsAndEventListeners();
+        this.bindingsAndEventListeners();
         this.fetchAndLoadCourses();
       }
 
-      initBindingsAndEventListeners(){
+      bindingsAndEventListeners(){
         this.sectionAddition.addEventListener("click", function() {
           event.preventDefault();
           this.addSection();
@@ -22,7 +23,7 @@ class Courses {
       }
 
       addSection(){
-        const form = document.getElementById('new-course-form');
+        const form = document.getElementById('cool');
         const section = document.createElement('div');
         form.appendChild(section)
         section.className = "section-area";
@@ -61,23 +62,26 @@ class Courses {
         let form = document.getElementById("new-course-form");
             if (form.classList.contains("call")){
               form.classList.remove("call")
-            }
-                
+            } 
+      }
+
+      sForm(){
+        console.log('course is being created')
       }
 
       fetchAndLoadCourses(){
           this.adapter
           .getCourses()
-          .then(courses => this.createCourses(courses))
+          .then(courses => this.listCourses(courses))
           .then(() => {
-                      this.renderSections();
-                    })
+             this.renderSections();
+          })
           .then(() => {
-            this.render();
+             this.render();
           })
       }
 
-      createCourses(courses){
+      listCourses(courses){
         for (let course of courses){
           let sections = this.createSectionsArray(course.attributes.sections)
           this.courses.push(new Course(course.attributes.title, sections))
@@ -94,7 +98,8 @@ class Courses {
       }
 
       renderSections(){
-        this.courseSectionsContainer.innerHTML = this.courses.map(course => course.renderSections())
+        this.courseSectionsContainer.innerHTML = this.courses.map(course => course.renderSections()).join('')
+        //join ('') to get rid of commas when rendering the html
       }
     }
   

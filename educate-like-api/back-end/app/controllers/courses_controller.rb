@@ -13,9 +13,7 @@ class CoursesController < ApplicationController
 
     def create
         course = Course.new(course_params)
-        paths = params[:paths].map { |path| Path.find_by(title: path) }
         tags = params[:tags].map { |tag| Course.tags.find_or_create_by(name: tag) }
-        course.paths << paths
         course.tags << tags
         course.save
         render json: CourseSerializer.new(course)

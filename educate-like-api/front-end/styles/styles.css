@@ -1,16 +1,4 @@
-body {
-    margin: 0;
-    padding: 0;
-    color: #294762;
-    opacity: 100%;
-    font-size: 13px;
-    font-style: normal;
-    font-family: 'Solway', serif;
-    font-weight: 40;
-  }
-
-  div {margin: 20px 0px 10px 10px; }
-
+  
   @font-face {
     font-family: 'Lato';
     font-style: bold;
@@ -40,6 +28,19 @@ body {
     font-weight: 400;
     src: local('Inria Serif Regular'), local('InriaSerif-Regular'), url(https://fonts.gstatic.com/s/inriaserif/v1/fC1lPYxPY3rXxEndZJAzN3Srdy3vrFCl.woff2) format('woff2');
    }
+
+   body {
+    margin: 0;
+    padding: 0;
+    color: #294762;
+    opacity: 100%;
+    font-size: 13px;
+    font-style: normal;
+    font-family: 'Solway', serif;
+    font-weight: 40;
+  }
+
+  div {margin: 20px 0px 10px 10px; }
 
    #new-course-container {
         display: flex;
@@ -100,7 +101,7 @@ body {
     input {
         border-radius: 13px;
         border: .5px solid rgb(201, 199, 202);
-        padding: 2px; 
+        padding: 3px; 
         width: 160px;
         height: 15px;    
     }
@@ -120,7 +121,7 @@ body {
     }
 
     .wrapper{
-        margin: 10px;
+        margin: 7px;
     }
   
     .wrapper .sidebar{

@@ -22,61 +22,32 @@
            
         <div><h1>Courses</h1></div>
           <div id="new-course-form" class="call">
-            <section class="contact-wrap">
-              <form action="" class="contact-form">
-                  <div class="col-sm-6">
-                    <div class="input-block">
-                      <label for="">Course name</label>
-                      <input type="text" name="course-section" id="new-course-section"">
-                    </div>
-                  </div>
-                <div id="section-area"
-                  <div class="col-sm-12">
-                    <div class="input-block">
-                      <label> Section name </label>
-                      <input type="text" class="form-control" id="ip2">
-                    </div>
-                  </div>
-                  <div class="col-sm-12">
-                    <div class="input-block textarea">
-                      <label for="">Section Content</label>
-                      <textarea rows="6" placeholder="Provide lesson here..." class="form-control"></textarea>
-                    </div>
-                  </div>
-                  <div id="section-add">
-                    <button id="btnAdd" type="button"> + </button>
-                  </div>
-                  <div class="col-sm-12">
-                    <button class="square-button">Send</button>
-                  </div>
-
-                  <div class="col-sm-13">
-                    <button id="close-section"class="square-button">Close</button>
-                  </div>
-    
-                  <h1>Tags</h1>
-                  <div class="select">
-                    <select name="slct" id="slct">
-                      <option selected disabled>Choose an option</option>
-                      <option value="1">Pure CSS</option>
-                      <option value="2">No JS</option>
-                      <option value="3">Nice!</option>
-                    </select>
-                  </div>
-                </form>
-              </section>
-            </div><!--end call-->
+            <form id="create-course">
+              <label for="course-name">Course Name</label>
+              <input type="text" name="course-name"><br>
+              <label for="section-name">Section Name</label>
+              <input type="text" name="section-name"><br>
+              <label for="section-content">Section Content</label><br>
+              <textarea rows="6" placeholder="Provide lesson here..." class="form-control"></textarea><br>
+              <div id="section-add">
+                <button id="btnAdd" type="button"> + </button>
+              </div>
+              <input id="form-submit" type="submit" value="Create New">
+            </form>
+        </div><!--end call-->
       </div> <!--end main-->
     </div> <!--end wrapper-->
     <div class="card-wrapper">
       <div id="new-course-container"> 
           <div class="card-view"></div>
+          
       </div>
+      <div id="section-view"></div>
     </div>
+
       <div id="courses" style="text-align: center;">
           <div id="instruction"> Click card to view sections </div>
       </div>
-
 
     <script src="src/components/courses.js"></script>
     <script src="src/components/tags.js"></script>
