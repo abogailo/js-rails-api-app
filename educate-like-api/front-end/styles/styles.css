@@ -54,9 +54,14 @@
     .card {
         width: 200px;
         height: 200px;
-        border: 0px solid #f1f1f1;
         box-shadow: 7px 7px 5px 0px rgba(194,190,194,1);
         border-radius: 10px;
+        cursor: pointer;
+    }
+    .card:hover,
+    .card.active {
+        box-shadow: 0px 0px 0px 2px #4360b5;
+     
     }
 
     .hidden {
@@ -69,8 +74,38 @@
 
     #btnAdd {
         border-radius: 13px;
-        color: rgb(222, 231, 230);
-        background-color: #3b6386;
+        border: 1px solid #f1f1f1;
+        color: #ffffff;
+        background-color: #9063f8;
+        font-size: 300;
+        cursor: pointer;
+    }
+
+    #btnAdd:hover,
+    #btnAdd.active{
+        background: #ffffff;
+        color: #9063f8;
+        border: 1px solid #9063f8;
+    }
+
+    #form-submit{
+        border-radius: 13px;
+        border: 0px solid #f1f1f1;
+        color: #ffffff;
+        background-color: #bff863;
+        font-family: 'Solway';
+        font-weight: 400;
+        padding-bottom: 10px;
+        height: 20px;
+        width: 130px;
+        margin-left: 300px;
+        cursor: pointer;
+    }
+
+    #form-submit:hover,
+    #form-submit.active{
+        background: #4360b5;
+        color: #fff;
     }
     
     #section-area {
@@ -87,6 +122,10 @@
     #section-content{
         font-weight: italic;
         transition: background .25s ease-in-out
+    }
+
+    .section-stuff{
+        margin-left: 45px;
     }
 
     .course_card{
@@ -118,6 +157,10 @@
         resize: vertical;
         background: #fff;
         transition: background .25s ease-in-out;
+    }
+
+    #instruction{
+        margin-left: 134px;
     }
 
     .wrapper{

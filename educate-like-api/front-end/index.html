@@ -23,15 +23,24 @@
         <div><h1>Courses</h1></div>
           <div id="new-course-form" class="call">
             <form id="create-course">
-              <label for="course-name">Course Name</label>
-              <input type="text" name="course-name"><br>
-              <label for="section-name">Section Name</label>
-              <input type="text" name="section-name"><br>
-              <label for="section-content">Section Content</label><br>
-              <textarea rows="6" placeholder="Provide lesson here..." class="form-control"></textarea><br>
+              <div id="course-name">
+                <label for="course-name">Course Name</label>
+                <input type="text" name="course-name"><br>
+              </div>
+              <div id="section-name" class="section-stuff">
+                <label for="section-name">Section Name</label>
+                <input type="text" name="section-name"><br>
+              </div>
+              <div id="section-content" class="section-stuff">
+                <label for="section-content">Section Content</label><br>
+                <textarea rows="6" placeholder="Provide lesson here..." class="form-control"></textarea><br>
+              </div>
+              <div id="section-view"></div>
+
               <div id="section-add">
                 <button id="btnAdd" type="button"> + </button>
               </div>
+      
               <input id="form-submit" type="submit" value="Create New">
             </form>
         </div><!--end call-->
@@ -40,9 +49,7 @@
     <div class="card-wrapper">
       <div id="new-course-container"> 
           <div class="card-view"></div>
-          
-      </div>
-      <div id="section-view"></div>
+      </div> 
     </div>
 
       <div id="courses" style="text-align: center;">

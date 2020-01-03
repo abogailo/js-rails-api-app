@@ -23,7 +23,7 @@ class Courses {
       }
 
       addSection(){
-        const form = document.getElementById('cool');
+        const form = document.getElementById('section-view');
         const section = document.createElement('div');
         form.appendChild(section)
         section.className = "section-area";
@@ -94,7 +94,7 @@ class Courses {
       } 
   
       render() {
-         this.courses.map(course => course.renderCourseCards())
+         this.courses.map(course => course.renderCourseCards()).join('');
       }
 
       renderSections(){
