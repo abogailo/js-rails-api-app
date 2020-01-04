@@ -6,6 +6,7 @@ class Courses {
         this.coursesContainer = document.getElementById('courses-container');
         this.courseSectionsContainer = document.getElementById('section-view');
         //set it to a random div just to load all the sections, they are all hidden at this point
+        this.submitData = document.getElementById('form-submit');
         this.courseForm = document.getElementById('new-course-form');
         this.createForm = document.getElementById('create');
         this.bindingsAndEventListeners();
@@ -19,6 +20,10 @@ class Courses {
         }.bind(this))
         this.createForm.addEventListener("click", function() {
           this.showForm();
+        }.bind(this))
+        this.submitData.addEventListener("click", function() {
+          event.preventDefault();
+          this.sendData();
         }.bind(this))
       }
 
@@ -65,9 +70,35 @@ class Courses {
             } 
       }
 
-      sForm(){
-        console.log('course is being created')
+       //https://learn.co/tracks/full-stack-web-development-v8/module-14-front-end-web-programming-in-javascript/section-4-communication-with-the-server/sending-data-with-fetch-lab
+      sendData(){
+        console.log('ya made it here')
+        let sections_array = [
+          {
+            title: "cool cat",
+            content: "really cool kitty cat"
+          },
+          {
+            title: "oh lort",
+            content: "will this work"
+          }
+        ]
+
+        const configObject = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({
+             "title": "cat",
+             "sections_attributes": sections_array
+
+            })
+          };
+          this.adapter.createCourse(configObject)
       }
+
 
       fetchAndLoadCourses(){
           this.adapter

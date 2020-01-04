@@ -16,14 +16,8 @@ class CoursesAdapter {
         
     }
     
-    async createCourse(value){
-        const res = await fetch(this.baseUrl, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ course })
-        });
+    async createCourse(configObject){
+        const res = await fetch(this.baseUrl, configObject);
         return await res.json();
     }
 }
