@@ -44,6 +44,7 @@ class Courses {
         sectionName.appendChild(inputName);
         inputName.type = "text";
         inputName.name = "add-section-name";
+        inputName.className = "add-sect-name"
         const sectionContent = document.createElement('div');
         sectionWrapper.appendChild(sectionContent);
         sectionContent.id = "add-section-content";
@@ -77,25 +78,26 @@ class Courses {
         const sectionName = form.elements['section-name'].value;
         const sectionContent = form.elements['section-content'].value;
 
-        const addSectionName = form.elements['add-section-name'].value;
-        const addSectionContent = form.elements['add-section-content'].value;
-        console.log('ya made it here')
-        let sections_array = []
-        let collectionOfSections = document.getElementsByClassName("section-wrapper")
-        if (collectionOfSections.length > 0) {
-          console.log(collectionOfSections)
-      }
-          
-          
-        
         sections_array.push({
           title: sectionName,
           content: sectionContent
         })
-        sections_array.push({
-          title: addSectionName,
-          content: addSectionContent
-        })
+        
+        console.log('ya made it here')
+        let sections_array = []
+        let collectionOfSections = document.getElementsByClassName("section-wrapper")
+        if (collectionOfSections.length > 0) {
+          for(let element of collectionOfSections){
+            let addSectionName = element.getElementsByClassName("form-control")[0].value
+            let addSectionContent = element.getElementsByClassName("add-sect-name")[0].value
+            sections_array.push({
+              title: addSectionName,
+              content: addSectionContent
+            })
+            //TODO make better names, these names are terrible, maybe push to the front of array and add static section after to the front
+          }
+        }
+        
         console.log(sections_array)
         const configObject = {
             method: "POST",
