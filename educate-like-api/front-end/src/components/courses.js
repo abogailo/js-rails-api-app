@@ -28,38 +28,35 @@ class Courses {
       }
 
       addSection(){
-        const form = document.getElementById('section-view');
-        const section = document.createElement('div');
-        form.appendChild(section)
-        section.className = "section-area";
-        const nameSection = document.createElement('div');
-        section.appendChild(nameSection)
-        nameSection.className = "col-sm-12";
-        const contentSection = document.createElement('div');
-        section.appendChild(contentSection)
-        contentSection.className = "col-sm-12";
-        const inputBlockName = document.createElement('div');
-        nameSection.appendChild(inputBlockName)
-        inputBlockName.className = "input-block";
-        const inputBlockSection = document.createElement('div');
-        contentSection.appendChild(inputBlockSection)
-        inputBlockSection.className = "input-block textarea";
-        const labelSectionName = document.createElement('label')
-        inputBlockName.appendChild(labelSectionName)
-        labelSectionName.innerHTML = 'Section name '
-        const labelSectionContent = document.createElement('label')
-        inputBlockSection.appendChild(labelSectionContent)
-        labelSectionContent.innerHTML = 'Section content '
-        const inputSectionName = document.createElement('input')
-        inputBlockName.appendChild(inputSectionName)
-        inputSectionName.type = "text";
-        inputSectionName.className = "form-control";
-        inputSectionName.id = "ip2"
-        const textSectionContent = document.createElement('textarea')
-        inputBlockSection.appendChild(textSectionContent)
-        textSectionContent.rows = "6"
-        textSectionContent.placeholder = "Provide lesson here..."
-        textSectionContent.className = "form-control";
+        const section = document.getElementById('section-view');
+        const sectionName = document.createElement('div');
+        section.appendChild(sectionName);
+        sectionName.id = "section-name";
+        sectionName.className = "section-stuff"
+        const labelName = document.createElement('label');
+        sectionName.appendChild(labelName);
+        labelName.for = "section-name";
+        labelName.innerHTML = 'Section name ';
+        const inputName = document.createElement('input');
+        sectionName.appendChild(inputName);
+        inputName.type = "text";
+        inputName.name = "section-name";
+        const sectionContent = document.createElement('div');
+        section.appendChild(sectionContent);
+        sectionContent.id = "section-content";
+        sectionContent.className = "section-stuff"
+        const labelContent = document.createElement('label');
+        const addbreak = document.createElement('br');
+        sectionContent.appendChild(labelContent);
+        sectionContent.appendChild(addbreak);
+        labelContent.for = "section-content";
+        labelContent.innerHTML = 'Section Content ';
+        const inputContent = document.createElement('input');
+        sectionContent.appendChild(inputContent);
+        inputContent.type = "text";
+        inputContent.name = "section-content";
+        inputContent.placeholder = "Provide lesson here..."
+        inputContent.className = "form-control"
       }
 
       showForm(){
@@ -72,11 +69,15 @@ class Courses {
 
        //https://learn.co/tracks/full-stack-web-development-v8/module-14-front-end-web-programming-in-javascript/section-4-communication-with-the-server/sending-data-with-fetch-lab
       sendData(){
+        const form = document.forms['create-course'];
+        const courseName = form.elements['course-name'].value;
+        const sectionName = form.elements['section-name'].value;
+        const sectionContent = form.elements['section-content'].value;
         console.log('ya made it here')
         let sections_array = [
           {
-            title: "cool cat",
-            content: "really cool kitty cat"
+            title: sectionName,
+            content: sectionContent
           },
           {
             title: "oh lort",
@@ -91,7 +92,7 @@ class Courses {
               "Accept": "application/json"
             },
             body: JSON.stringify({
-             "title": "cat",
+             "title": courseName,
              "sections_attributes": sections_array
 
             })
