@@ -77,19 +77,18 @@ class Courses {
         const courseName = form.elements['course-name'].value;
         const sectionName = form.elements['section-name'].value;
         const sectionContent = form.elements['section-content'].value;
-
+        let sections_array = []
+        let collectionOfSections = document.getElementsByClassName("section-wrapper")
+        
         sections_array.push({
           title: sectionName,
           content: sectionContent
         })
         
-        console.log('ya made it here')
-        let sections_array = []
-        let collectionOfSections = document.getElementsByClassName("section-wrapper")
         if (collectionOfSections.length > 0) {
           for(let element of collectionOfSections){
-            let addSectionName = element.getElementsByClassName("form-control")[0].value
-            let addSectionContent = element.getElementsByClassName("add-sect-name")[0].value
+            let addSectionName = element.getElementsByClassName("add-sect-name")[0].value
+            let addSectionContent = element.getElementsByClassName("form-control")[0].value
             sections_array.push({
               title: addSectionName,
               content: addSectionContent
