@@ -55,8 +55,7 @@ class Course {
                     element.classList.value += " hidden"
                 }
             }
-
-          }
+        }
     }
  
     renderSections(){

@@ -29,32 +29,35 @@ class Courses {
 
       addSection(){
         const section = document.getElementById('section-view');
+        const sectionWrapper = document.createElement('div');
+        sectionWrapper.className = "section-wrapper";
+        section.appendChild(sectionWrapper);
         const sectionName = document.createElement('div');
-        section.appendChild(sectionName);
-        sectionName.id = "section-name";
+        sectionWrapper.appendChild(sectionName);
+        sectionName.id = "add-section-name";
         sectionName.className = "section-stuff"
         const labelName = document.createElement('label');
         sectionName.appendChild(labelName);
-        labelName.for = "section-name";
+        labelName.for = "add-section-name";
         labelName.innerHTML = 'Section name ';
         const inputName = document.createElement('input');
         sectionName.appendChild(inputName);
         inputName.type = "text";
-        inputName.name = "section-name";
+        inputName.name = "add-section-name";
         const sectionContent = document.createElement('div');
-        section.appendChild(sectionContent);
-        sectionContent.id = "section-content";
+        sectionWrapper.appendChild(sectionContent);
+        sectionContent.id = "add-section-content";
         sectionContent.className = "section-stuff"
         const labelContent = document.createElement('label');
         const addbreak = document.createElement('br');
         sectionContent.appendChild(labelContent);
         sectionContent.appendChild(addbreak);
-        labelContent.for = "section-content";
+        labelContent.for = "add-section-content";
         labelContent.innerHTML = 'Section Content ';
         const inputContent = document.createElement('input');
         sectionContent.appendChild(inputContent);
         inputContent.type = "text";
-        inputContent.name = "section-content";
+        inputContent.name = "add-section-content";
         inputContent.placeholder = "Provide lesson here..."
         inputContent.className = "form-control"
       }
@@ -73,18 +76,27 @@ class Courses {
         const courseName = form.elements['course-name'].value;
         const sectionName = form.elements['section-name'].value;
         const sectionContent = form.elements['section-content'].value;
-        console.log('ya made it here')
-        let sections_array = [
-          {
-            title: sectionName,
-            content: sectionContent
-          },
-          {
-            title: "oh lort",
-            content: "will this work"
-          }
-        ]
 
+        const addSectionName = form.elements['add-section-name'].value;
+        const addSectionContent = form.elements['add-section-content'].value;
+        console.log('ya made it here')
+        let sections_array = []
+        let collectionOfSections = document.getElementsByClassName("section-wrapper")
+        if (collectionOfSections.length > 0) {
+          console.log(collectionOfSections)
+      }
+          
+          
+        
+        sections_array.push({
+          title: sectionName,
+          content: sectionContent
+        })
+        sections_array.push({
+          title: addSectionName,
+          content: addSectionContent
+        })
+        console.log(sections_array)
         const configObject = {
             method: "POST",
             headers: {
