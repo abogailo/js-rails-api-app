@@ -5,8 +5,6 @@ class Course {
         this.sections = sections;
     }
 
-   
-
     renderCourseCards(){
         const card = document.createElement('div');
         card.className = "card";

@@ -111,8 +111,10 @@ class Courses {
             })
           };
           this.adapter.createCourse(configObject)
+          .then(() => {
+            this.fetchAndLoadCourses();
+          })
       }
-
 
       fetchAndLoadCourses(){
           this.adapter
@@ -124,6 +126,9 @@ class Courses {
           .then(() => {
              this.render();
           })
+          .then(() => {
+            this.renderAllTags();
+          })
       }
 
       listCourses(courses){
@@ -145,6 +150,10 @@ class Courses {
       renderSections(){
         this.courseSectionsContainer.innerHTML = this.courses.map(course => course.renderSections()).join('')
         //join ('') to get rid of commas when rendering the html
+      }
+
+      renderTags(){
+
       }
     }
   
