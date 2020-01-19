@@ -2,7 +2,6 @@ class Tags {
     constructor() {
       this.adapter = new TagsAdapter();
       this.bindingsAndEventListeners();
-      this.fetchAndLoadTags();
     }
 
     bindingsAndEventListeners(){

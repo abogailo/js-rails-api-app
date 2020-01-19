@@ -11,9 +11,15 @@ class Course {
         const course_card = document.createElement('div');
         course_card.className = "course_card";
         const paragraphElement = document.createElement("p");
-
+        const card_remove = document.createElement('div');
+        const materialCloseicon = document.createElement('i');
+        card_remove.className = "card-remove";
+        materialCloseicon.className = "material-icons";
+        materialCloseicon.innerHTML = "delete_outline";
+        card_remove.appendChild(materialCloseicon);
         paragraphElement.appendChild(document.createTextNode(this.title));
         course_card.appendChild(paragraphElement)
+        course_card.appendChild(card_remove)
         card.appendChild(course_card)
         document.getElementById("new-course-container").appendChild(card);
         card.style.border = "1px solid white";

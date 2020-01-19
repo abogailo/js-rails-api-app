@@ -9,6 +9,7 @@ class Courses {
         this.submitData = document.getElementById('form-submit');
         this.courseForm = document.getElementById('new-course-form');
         this.createForm = document.getElementById('create');
+        this.removeCard = document.querySelector('card-remove');
         this.bindingsAndEventListeners();
         this.fetchAndLoadCourses();
       }
@@ -25,6 +26,15 @@ class Courses {
           event.preventDefault();
           this.sendData();
         }.bind(this))
+        this.removeCard.addEventListener('click', function (e) {
+          if (elementMatches(e.target, '.card-remove, .card-remove i')) {
+            removeItem(e);
+          }
+        });
+      }
+
+      removeItem(e){
+        console.log("removeItem");
       }
 
       addSection(){
@@ -110,25 +120,22 @@ class Courses {
 
             })
           };
-          this.adapter.createCourse(configObject)
-          .then(() => {
+          this.adapter.createCourse(configObject).then(() => {
             this.fetchAndLoadCourses();
           })
       }
+      
 
       fetchAndLoadCourses(){
           this.adapter
           .getCourses()
-          .then(courses => this.listCourses(courses))
+          .then(courses => this.listCourses(courses))>[poikjm ]
           .then(() => {
              this.renderSections();
           })
           .then(() => {
              this.render();
           })
-          .then(() => {
-            this.renderAllTags();
-          })
       }
 
       listCourses(courses){
