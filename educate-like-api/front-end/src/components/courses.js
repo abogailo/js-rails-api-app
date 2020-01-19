@@ -9,10 +9,12 @@ class Courses {
         this.submitData = document.getElementById('form-submit');
         this.courseForm = document.getElementById('new-course-form');
         this.createForm = document.getElementById('create');
-        this.removeCard = document.querySelector('card-remove');
+        this.removeCard = document.getElementById('card-wrapper');
         this.bindingsAndEventListeners();
         this.fetchAndLoadCourses();
       }
+
+  
 
       bindingsAndEventListeners(){
         this.sectionAddition.addEventListener("click", function() {
@@ -27,15 +29,32 @@ class Courses {
           this.sendData();
         }.bind(this))
         this.removeCard.addEventListener('click', function (e) {
-          if (elementMatches(e.target, '.card-remove, .card-remove i')) {
-            removeItem(e);
+          if (this.elementMatch(e.target, '.card-remove, .card-remove i')) {
+            this.removeItem(e);
           }
-        });
+        }.bind(this));
+
+      }
+
+     /* determineIfElementMatches(element, selector) {
+        return element.matches(selector);
+      }
+      //use a polyfill in case element.matches doesnt work.
+      //https://developer.mozilla.org/en-US/docs/Web/API/Element/matches
+
+      */
+
+      elementMatch(element, selector){
+        var p = Element.prototype;
+        return (p.matches || p.matchesSelector || p.webkitMatchesSelector || p.mozMatchesSelector || p.msMatchesSelector || p.oMatchesSelector).call(element, selector);
+
       }
 
       removeItem(e){
         console.log("removeItem");
       }
+
+       
 
       addSection(){
         const section = document.getElementById('section-view');
@@ -129,7 +148,7 @@ class Courses {
       fetchAndLoadCourses(){
           this.adapter
           .getCourses()
-          .then(courses => this.listCourses(courses))>[poikjm ]
+          .then(courses => this.listCourses(courses))
           .then(() => {
              this.renderSections();
           })
