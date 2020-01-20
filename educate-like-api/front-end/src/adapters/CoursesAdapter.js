@@ -2,8 +2,6 @@ class CoursesAdapter {
     constructor() {
         this.baseUrl =
         'http://localhost:3000/courses'
-        this.removalUrl = 
-        'http://localhost:3000/courses'
     }
 
     async getCourses() {
@@ -23,11 +21,8 @@ class CoursesAdapter {
         return await res.json();
     }
 
-    async removeCourse(configObject){
-        const res = await fetch(this.removalUrl, configObject);
+    async removeCourse(configObject, toRemove){
+        const res = await fetch(this.baseUrl + "/" + toRemove, configObject);
         return await res.json();
     }
 }
-
-//adapter = newCoursesAdapter()
-//adapter.getCourses()

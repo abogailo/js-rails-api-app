@@ -14,8 +14,6 @@ class Courses {
         this.fetchAndLoadCourses();
       }
 
-  
-
       bindingsAndEventListeners(){
         this.sectionAddition.addEventListener("click", function() {
           event.preventDefault();
@@ -46,7 +44,6 @@ class Courses {
       elementMatch(element, selector){
         var p = Element.prototype;
         return (p.matches || p.matchesSelector || p.webkitMatchesSelector || p.mozMatchesSelector || p.msMatchesSelector || p.oMatchesSelector).call(element, selector);
-
       }
 
       removeItem(e){
@@ -58,7 +55,6 @@ class Courses {
 
        cardToRemove.parentNode.removeChild(cardToRemove); //gets the cards parent to remove the child evidently deleting the card
        this.removeData(toRemove);
-        console.log(toRemove);
       }
 
       addSection(){
@@ -78,7 +74,7 @@ class Courses {
         sectionName.appendChild(inputName);
         inputName.type = "text";
         inputName.name = "add-section-name";
-        inputName.className = "add-sect-name"
+        inputName.className = "add-section-name"
         const sectionContent = document.createElement('div');
         sectionWrapper.appendChild(sectionContent);
         sectionContent.id = "add-section-content";
@@ -105,6 +101,42 @@ class Courses {
             } 
       }
 
+      hideForm(){
+        console.log("ya hiding it")
+        let form = document.getElementById("new-course-form");
+          if (!form.classList.contains("call")){
+            form.className += " call"
+          } 
+      }
+
+      showContainer(){
+        console.log("ya made it")
+        let form = document.getElementById("new-course-container");
+            if (form.classList.contains("call")){
+              form.classList.remove("call")
+            } 
+      }
+
+      hideContainer(){
+          var childNodes = document.getElementById('new-course-container').childNodes;
+          for(var i=childNodes.length-1;i >= 0;i--){ //go backward through the nodes 
+              var childNode = childNodes[i];
+              if(childNode.className == 'card'){
+                  childNode.parentNode.removeChild(childNode);
+              }
+          }
+      }
+ 
+      hideSection(){
+        var childNodes = document.getElementById('courses').childNodes;
+        for(var i=childNodes.length-1;i >= 0;i--){ //go backward through the nodes 
+            var childNode = childNodes[i];
+            if(childNode.id == 'section-area'){
+                childNode.parentNode.removeChild(childNode);
+            }
+        }
+    }
+
        //https://learn.co/tracks/full-stack-web-development-v8/module-14-front-end-web-programming-in-javascript/section-4-communication-with-the-server/sending-data-with-fetch-lab
       sendData(){
         const form = document.forms['create-course'];
@@ -121,17 +153,15 @@ class Courses {
         
         if (collectionOfSections.length > 0) {
           for(let element of collectionOfSections){
-            let addSectionName = element.getElementsByClassName("add-sect-name")[0].value
+            let addSectionName = element.getElementsByClassName("add-section-name")[0].value
             let addSectionContent = element.getElementsByClassName("form-control")[0].value
             sections_array.push({
               title: addSectionName,
               content: addSectionContent
             })
-            //TODO make better names, these names are terrible, maybe push to the front of array and add static section after to the front
           }
         }
         
-        console.log(sections_array)
         const configObject = {
             method: "POST",
             headers: {
@@ -141,7 +171,6 @@ class Courses {
             body: JSON.stringify({
              "title": courseName,
              "sections_attributes": sections_array
-
             })
           };
           this.adapter.createCourse(configObject).then(() => {
@@ -150,8 +179,6 @@ class Courses {
       }
 
       removeData(toRemove){
-        console.log("gots to be removed" + toRemove);
-
         const configObject = {
           method: "DELETE",
           headers: {
@@ -162,24 +189,35 @@ class Courses {
            "id": toRemove
           })
         };
-        this.adapter.removeCourse(configObject).then(() => {
-          this.fetchAndLoadCourses();
+        this.adapter.removeCourse(configObject, toRemove).then(() => {
+          const contain = document.getElementById('card')
+          this.hideContainer();
+          this.hideSection();
+          this.adapter
+                .getCourses()
+                .then(courses => this.listCourses(courses))
+                console.log(courses)
+                .then(() => {
+                  this.renderSections();
+                })
+                .then(() => {
+                          this.render();
+                        })
         })
       }
-      
 
       fetchAndLoadCourses(){
-          this.adapter
-          .getCourses()
-          .then(courses => this.listCourses(courses))
-          .then(() => {
-             this.renderSections();
-          })
-          .then(() => {
-             this.render();
-          })
+        this.adapter
+        .getCourses()
+        .then(courses => this.listCourses(courses))
+        .then(() => {
+          this.renderSections();
+        })
+        .then(() => {
+          this.render();
+        })
       }
-
+  
       listCourses(courses){
         for (let course of courses){
           let sections = this.createSectionsArray(course.attributes.sections)
@@ -193,16 +231,12 @@ class Courses {
       } 
   
       render() {
-         this.courses.map(course => course.renderCourseCards()).join('');
+         this.courses.map(course => course.renderCourseCard()).join('');
       }
 
       renderSections(){
         this.courseSectionsContainer.innerHTML = this.courses.map(course => course.renderSections()).join('')
         //join ('') to get rid of commas when rendering the html
-      }
-
-      renderTags(){
-
       }
     }
   

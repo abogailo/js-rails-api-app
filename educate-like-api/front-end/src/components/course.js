@@ -7,7 +7,7 @@ class Course {
         console.log(this.id);
     }
 
-    renderCourseCards(){
+    renderCourseCard(){
         const card = document.createElement('div');
         card.className = "card";
         const course_card = document.createElement('div');
