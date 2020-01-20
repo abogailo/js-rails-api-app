@@ -51,12 +51,14 @@ class Courses {
       }
 
       removeItem(e){
-       var parentDiv = e.target.parentNode;
-       var parentParent = parentDiv.parentNode;
-       var para = parentParent.getElementsByClassName('card-paragraph')[0];
-       var toRemove = para.id;
+       const elementsParent = e.target.parentNode;
+       const parentParent = elementsParent.parentNode;
+       const para = parentParent.getElementsByClassName('card-paragraph')[0];
+       const toRemove = para.id;
+       const cardToRemove = parentParent.parentNode;
 
-       removeData(toRemove);
+       cardToRemove.parentNode.removeChild(cardToRemove); //gets the cards parent to remove the child evidently deleting the card
+       this.removeData(toRemove);
         console.log(toRemove);
       }
 
@@ -153,6 +155,20 @@ class Courses {
 
       removeData(toRemove){
         console.log("gots to be removed");
+
+        const configObject = {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+           "title": toRemove
+          })
+        };
+        this.adapter.removeCourse(configObject).then(() => {
+          this.fetchAndLoadCourses();
+        })
       }
       
 
