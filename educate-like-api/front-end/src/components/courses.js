@@ -51,8 +51,15 @@ class Courses {
       }
 
       removeItem(e){
-        console.log("removeItem");
+       var parentDiv = e.target.parentNode;
+       var parentParent = parentDiv.parentNode;
+       var para = parentParent.getElementsByClassName('card-paragraph')[0];
+       var toRemove = para.id;
+
+       removeData(toRemove);
+        console.log(toRemove);
       }
+
 
        
 
@@ -142,6 +149,10 @@ class Courses {
           this.adapter.createCourse(configObject).then(() => {
             this.fetchAndLoadCourses();
           })
+      }
+
+      removeData(toRemove){
+        console.log("gots to be removed");
       }
       
 

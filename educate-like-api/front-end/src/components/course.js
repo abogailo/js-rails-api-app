@@ -18,6 +18,8 @@ class Course {
         materialCloseicon.innerHTML = "delete_outline";
         card_remove.appendChild(materialCloseicon);
         paragraphElement.appendChild(document.createTextNode(this.title));
+        paragraphElement.id = this.title;
+        paragraphElement.className = "card-paragraph";
         course_card.appendChild(paragraphElement)
         course_card.appendChild(card_remove)
         card.appendChild(course_card)
