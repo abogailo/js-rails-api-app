@@ -33,7 +33,6 @@ class Courses {
             this.removeItem(e);
           }
         }.bind(this));
-
       }
 
      /* determineIfElementMatches(element, selector) {
@@ -61,9 +60,6 @@ class Courses {
        this.removeData(toRemove);
         console.log(toRemove);
       }
-
-
-       
 
       addSection(){
         const section = document.getElementById('section-view');
@@ -163,7 +159,7 @@ class Courses {
             "Accept": "application/json"
           },
           body: JSON.stringify({
-           "title": toRemove
+           "id": toRemove
           })
         };
         this.adapter.removeCourse(configObject).then(() => {
@@ -187,7 +183,7 @@ class Courses {
       listCourses(courses){
         for (let course of courses){
           let sections = this.createSectionsArray(course.attributes.sections)
-          this.courses.push(new Course(course.attributes.title, sections))
+          this.courses.push(new Course(course.attributes.title, sections, course.id))
         }
       }
 

@@ -1,8 +1,10 @@
 class Course {
     
-    constructor(title, sections) {
+    constructor(title, sections, id) {
         this.title = title;
         this.sections = sections;
+        this.id = id;
+        console.log(this.id);
     }
 
     renderCourseCards(){
@@ -18,7 +20,7 @@ class Course {
         materialCloseicon.innerHTML = "delete_outline";
         card_remove.appendChild(materialCloseicon);
         paragraphElement.appendChild(document.createTextNode(this.title));
-        paragraphElement.id = this.title;
+        paragraphElement.id = this.id;
         paragraphElement.className = "card-paragraph";
         course_card.appendChild(paragraphElement)
         course_card.appendChild(card_remove)
