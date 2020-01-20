@@ -140,6 +140,7 @@
       }
       .course_card:hover > .card-remove {
         display: block;
+        
       }
     
     .card_view {

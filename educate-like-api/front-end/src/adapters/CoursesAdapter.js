@@ -20,9 +20,10 @@ class CoursesAdapter {
         const res = await fetch(this.baseUrl, configObject);
         return await res.json();
     }
-
+    
     async removeCourse(configObject, toRemove){
         const res = await fetch(this.baseUrl + "/" + toRemove, configObject);
         return await res.json();
     }
+
 }

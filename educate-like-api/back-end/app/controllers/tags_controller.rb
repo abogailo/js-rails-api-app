@@ -13,5 +13,5 @@ class TagsController < ApplicationController
 
   private                                                                                                                                                 def course_params
     params.require(:tag.permit(:name) #whitelisting parameters
-end
+  end
 end

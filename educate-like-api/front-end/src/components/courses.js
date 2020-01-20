@@ -102,20 +102,12 @@ class Courses {
       }
 
       hideForm(){
-        console.log("ya hiding it")
         let form = document.getElementById("new-course-form");
           if (!form.classList.contains("call")){
             form.className += " call"
           } 
       }
 
-      showContainer(){
-        console.log("ya made it")
-        let form = document.getElementById("new-course-container");
-            if (form.classList.contains("call")){
-              form.classList.remove("call")
-            } 
-      }
 
       hideContainer(){
           var childNodes = document.getElementById('new-course-container').childNodes;
@@ -135,7 +127,7 @@ class Courses {
                 childNode.parentNode.removeChild(childNode);
             }
         }
-    }
+      }
 
        //https://learn.co/tracks/full-stack-web-development-v8/module-14-front-end-web-programming-in-javascript/section-4-communication-with-the-server/sending-data-with-fetch-lab
       sendData(){
@@ -158,24 +150,52 @@ class Courses {
             sections_array.push({
               title: addSectionName,
               content: addSectionContent
-            })
-          }
-        }
-        
-        const configObject = {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json"
-            },
-            body: JSON.stringify({
-             "title": courseName,
-             "sections_attributes": sections_array
-            })
-          };
-          this.adapter.createCourse(configObject).then(() => {
-            this.fetchAndLoadCourses();
           })
+        }
+      }
+        
+      const configObject = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            "title": courseName,
+            "sections_attributes": sections_array
+          })
+        };
+        this.adapter.createCourse(configObject).then(function(json) {
+          for(let course of this.courses){
+            console.log(course)
+          }
+          console.log(this.courses)
+          this.hideContainer();
+          this.hideSection();
+          this.fetchAndLoadCourses();
+        }.bind(this))
+      }
+
+      fetchAndLoadCourses(){
+    console.log(this.courses)
+        this.courses.length = 0; //clears the object that was previously created
+        this.adapter
+        .getCourses()
+        .then(courses => this.listCourses(courses))
+        .then(() => {
+          this.renderSections();
+        console.log(this.courses)
+        })
+        .then(() => {
+          this.createCard();
+        })
+      }
+  
+      listCourses(courses){
+        for (let course of courses){
+          let sections = this.createSectionsArray(course.attributes.sections)
+          this.courses.push(new Course(course.attributes.title, sections, course.id))
+        }
       }
 
       removeData(toRemove){
@@ -190,39 +210,10 @@ class Courses {
           })
         };
         this.adapter.removeCourse(configObject, toRemove).then(() => {
-          const contain = document.getElementById('card')
           this.hideContainer();
           this.hideSection();
-          this.adapter
-                .getCourses()
-                .then(courses => this.listCourses(courses))
-                console.log(courses)
-                .then(() => {
-                  this.renderSections();
-                })
-                .then(() => {
-                          this.render();
-                        })
+          this.fetchAndLoadCourses();
         })
-      }
-
-      fetchAndLoadCourses(){
-        this.adapter
-        .getCourses()
-        .then(courses => this.listCourses(courses))
-        .then(() => {
-          this.renderSections();
-        })
-        .then(() => {
-          this.render();
-        })
-      }
-  
-      listCourses(courses){
-        for (let course of courses){
-          let sections = this.createSectionsArray(course.attributes.sections)
-          this.courses.push(new Course(course.attributes.title, sections, course.id))
-        }
       }
 
       createSectionsArray(sections){
@@ -230,8 +221,10 @@ class Courses {
         return sectionsArray
       } 
   
-      render() {
-         this.courses.map(course => course.renderCourseCard()).join('');
+      createCard() {
+        console.log(this.courses)
+    
+        this.courses.map(course => course.renderCourseCard()).join('');
       }
 
       renderSections(){
