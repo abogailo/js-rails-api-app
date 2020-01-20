@@ -94,7 +94,6 @@ class Courses {
       }
 
       showForm(){
-        console.log("ya made it")
         let form = document.getElementById("new-course-form");
             if (form.classList.contains("call")){
               form.classList.remove("call")
@@ -107,7 +106,6 @@ class Courses {
             form.className += " call"
           } 
       }
-
 
       hideContainer(){
           var childNodes = document.getElementById('new-course-container').childNodes;
@@ -170,6 +168,7 @@ class Courses {
             console.log(course)
           }
           console.log(this.courses)
+          this.hideForm();
           this.hideContainer();
           this.hideSection();
           this.fetchAndLoadCourses();
