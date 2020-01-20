@@ -19,7 +19,7 @@ class CoursesController < ApplicationController
     
     def destroy
         @course = Course.find(params[:id])
-        @course.delete
+        @course.destroy
         render json: @course
     end
     

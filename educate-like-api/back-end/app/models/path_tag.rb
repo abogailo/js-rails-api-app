@@ -1,2 +1,0 @@
-class PathTag < ApplicationRecord
-end

@@ -3,7 +3,7 @@ class CoursesAdapter {
         this.baseUrl =
         'http://localhost:3000/courses'
         this.removalUrl = 
-        'http://localhost:3000/courses/:id'
+        'http://localhost:3000/courses'
     }
 
     async getCourses() {

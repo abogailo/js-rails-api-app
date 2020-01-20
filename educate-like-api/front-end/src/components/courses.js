@@ -150,7 +150,7 @@ class Courses {
       }
 
       removeData(toRemove){
-        console.log("gots to be removed");
+        console.log("gots to be removed" + toRemove);
 
         const configObject = {
           method: "DELETE",
