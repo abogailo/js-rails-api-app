@@ -5,11 +5,13 @@ class Courses {
         this.sectionAddition = document.getElementById('btnAdd');
         this.coursesContainer = document.getElementById('courses-container');
         this.courseSectionsContainer = document.getElementById('section-view');
+        this.sortedCourseContainer = document.getElementById('sorted-course');
         //set it to a random div just to load all the sections, they are all hidden at this point
         this.submitData = document.getElementById('form-submit');
         this.courseForm = document.getElementById('new-course-form');
         this.createForm = document.getElementById('create');
         this.removeCard = document.getElementById('card-wrapper');
+        this.sortButton = document.getElementById('btnSort');
         this.bindingsAndEventListeners();
         this.fetchAndLoadCourses();
       }
@@ -31,6 +33,9 @@ class Courses {
             this.removeItem(e);
           }
         }.bind(this));
+        this.sortButton.addEventListener('click', function() {
+          this.sortCourses();
+        }.bind(this));
       }
 
      /* determineIfElementMatches(element, selector) {
@@ -40,6 +45,29 @@ class Courses {
       //https://developer.mozilla.org/en-US/docs/Web/API/Element/matches
 
       */
+     sortCourses(){
+      
+      fetch('http://localhost:3000/courses')
+      .then(response => response.json())
+      .then(courses => { 
+        courses.data.sort(function(a, b) {
+        var nameA = a.attributes.title.toUpperCase(); // ignore upper and lowercase
+        var nameB = b.attributes.title.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+      
+        // names must be equal
+        return 0;
+      });
+        console.log(courses.data)
+        this.sortedCourseContainer.innerHTML = courses.data.map(course => course.attributes.title).join(', ')
+      })
+     }
+
 
       elementMatch(element, selector){
         var p = Element.prototype;
@@ -176,7 +204,7 @@ class Courses {
       }
 
       fetchAndLoadCourses(){
-    console.log(this.courses)
+      console.log(this.courses)
         this.courses.length = 0; //clears the object that was previously created
         this.adapter
         .getCourses()
