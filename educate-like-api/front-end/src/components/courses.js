@@ -6,12 +6,14 @@ class Courses {
         this.coursesContainer = document.getElementById('courses-container');
         this.courseSectionsContainer = document.getElementById('section-view');
         this.sortedCourseContainer = document.getElementById('sorted-course');
+        this.filteredCourseContainer = document.getElementById('filter-course');
         //set it to a random div just to load all the sections, they are all hidden at this point
         this.submitData = document.getElementById('form-submit');
         this.courseForm = document.getElementById('new-course-form');
         this.createForm = document.getElementById('create');
         this.removeCard = document.getElementById('card-wrapper');
         this.sortButton = document.getElementById('btnSort');
+        this.filterButton = document.getElementById('btnFilter');
         this.bindingsAndEventListeners();
         this.fetchAndLoadCourses();
       }
@@ -36,6 +38,10 @@ class Courses {
         this.sortButton.addEventListener('click', function() {
           this.sortCourses();
         }.bind(this));
+        this.filterButton.addEventListener('click', (e) => {
+          this.filterCourses();
+          console.log("CLICKED!");
+        })
       }
 
      /* determineIfElementMatches(element, selector) {
@@ -45,6 +51,18 @@ class Courses {
       //https://developer.mozilla.org/en-US/docs/Web/API/Element/matches
 
       */
+     filterCourses(){
+      fetch('http://localhost:3000/courses')
+      .then(res => res.json())
+      .then(courses => {
+        const result = courses.data.filter(course => course.attributes.title === 'One Data');
+        console.log(result);
+        this.filteredCourseContainer.innerHTML = result.map(course => course.attributes.title);
+      })
+      
+      //One Data
+
+     }
      sortCourses(){
       
       fetch('http://localhost:3000/courses')
